@@ -5,15 +5,15 @@
   "license": "MIT",
   "dependencies": {
     "dayjs": "^1.11.7",
-    "puppeteer": "^19.4.0"
-  },
-  "nodemonConfig": {
-    "ignore": [
-      "courseOfferings/*",
-      "json/*"
-    ]
+    "aws-sdk": "^2.1163.0",
+    "chrome-aws-lambda": "^10.1.0",
+    "puppeteer-core": "^10.0.0"
   },
   "scripts": {
-    "start": "nodemon src/index.js"
+    "zip": "zip -r layer.zip ./",
+    "sendToLambda": "npm i && npm run zip && aws s3 cp layer.zip s3://petersen-scraper-modules && aws lambda update-function-code --function-name checkPotteryClassOpenings --s3-bucket petersen-scraper-modules --s3-key layer.zip && rm -rf layer.zip"
+  },
+  "engines": {
+    "node": ">= 12.0 <16.0"
   }
 }
