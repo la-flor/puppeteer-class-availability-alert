@@ -1,0 +1,19 @@
+{
+  "name": "petersen-scraper",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "dayjs": "^1.11.7",
+    "puppeteer": "^19.4.0"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "courseOfferings/*",
+      "json/*"
+    ]
+  },
+  "scripts": {
+    "start": "nodemon src/index.js"
+  }
+}
